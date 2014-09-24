@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C23D7F219D302CA0073E63A /* WhiskeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C23D7F119D302CA0073E63A /* WhiskeyViewController.m */; };
 		8CE6112219CC951800603018 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE6112119CC951800603018 /* main.m */; };
 		8CE6112519CC951900603018 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE6112419CC951900603018 /* AppDelegate.m */; };
 		8CE6112819CC951900603018 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE6112719CC951900603018 /* ViewController.m */; };
-		8CE6112B19CC951900603018 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CE6112919CC951900603018 /* Main.storyboard */; };
 		8CE6112D19CC951900603018 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CE6112C19CC951900603018 /* Images.xcassets */; };
 		8CE6113019CC951900603018 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE6112E19CC951900603018 /* LaunchScreen.xib */; };
 		8CE6113C19CC951900603018 /* AlcolatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE6113B19CC951900603018 /* AlcolatorTests.m */; };
@@ -27,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C23D7F019D302CA0073E63A /* WhiskeyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhiskeyViewController.h; sourceTree = "<group>"; };
+		8C23D7F119D302CA0073E63A /* WhiskeyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhiskeyViewController.m; sourceTree = "<group>"; };
 		8CE6111C19CC951800603018 /* Alcolator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alcolator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE6112019CC951800603018 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CE6112119CC951800603018 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -34,7 +36,6 @@
 		8CE6112419CC951900603018 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8CE6112619CC951900603018 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8CE6112719CC951900603018 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8CE6112A19CC951900603018 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8CE6112C19CC951900603018 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8CE6112F19CC951900603018 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8CE6113519CC951900603018 /* AlcolatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlcolatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +86,8 @@
 				8CE6112419CC951900603018 /* AppDelegate.m */,
 				8CE6112619CC951900603018 /* ViewController.h */,
 				8CE6112719CC951900603018 /* ViewController.m */,
-				8CE6112919CC951900603018 /* Main.storyboard */,
+				8C23D7F019D302CA0073E63A /* WhiskeyViewController.h */,
+				8C23D7F119D302CA0073E63A /* WhiskeyViewController.m */,
 				8CE6112C19CC951900603018 /* Images.xcassets */,
 				8CE6112E19CC951900603018 /* LaunchScreen.xib */,
 				8CE6111F19CC951800603018 /* Supporting Files */,
@@ -199,7 +201,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CE6112B19CC951900603018 /* Main.storyboard in Resources */,
 				8CE6113019CC951900603018 /* LaunchScreen.xib in Resources */,
 				8CE6112D19CC951900603018 /* Images.xcassets in Resources */,
 			);
@@ -220,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CE6112819CC951900603018 /* ViewController.m in Sources */,
+				8C23D7F219D302CA0073E63A /* WhiskeyViewController.m in Sources */,
 				8CE6112519CC951900603018 /* AppDelegate.m in Sources */,
 				8CE6112219CC951800603018 /* main.m in Sources */,
 			);
@@ -244,14 +246,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8CE6112919CC951900603018 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8CE6112A19CC951900603018 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8CE6112E19CC951900603018 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
