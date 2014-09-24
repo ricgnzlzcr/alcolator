@@ -10,9 +10,19 @@
 
 @interface WhiskeyViewController ()
 
+@property (weak, nonatomic) UILabel *whiskeyCounter;
+
 @end
 
 @implementation WhiskeyViewController
+
+- (void)loadView {
+    [super loadView];
+    UILabel *label = [[UILabel alloc] init];
+    [self.view addSubview:label];
+    self.whiskeyCounter = label;
+    
+}
 
 - (void)buttonPressed:(UIButton *)sender;
 {
@@ -49,6 +59,23 @@
     
     NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of whiskey.", nil), numberOfBeers, beerText, numberOfWhiskeyGlassesForEquivalentAlcoholAmount, whiskeyText];
     self.resultLabel.text = resultText;
+}
+
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    self.title = NSLocalizedString(@"Whiskey", @"whiskey");
+}
+
+- (void)sliderValueDidChange:(UISlider *)sender {
+    NSLog(@"Slider value changed to %f", sender.value);
+    
+    // Sends slider count to label
+    int howManyBeers = (int)self.beerCountSlider.value;
+    self.whiskeyCounter.text = [[NSString alloc] initWithFormat:@"%d", howManyBeers];
+    NSString *title = [[NSString alloc] initWithFormat:@"Whiskey (%d glasses)", howManyBeers];
+    self.title = NSLocalizedString(title, @"drinks");
+    
+    [self.beerPercentTextField resignFirstResponder];
 }
 
 @end

@@ -96,6 +96,8 @@
     self.resultLabel.numberOfLines = 0;
     self.resultLabel.textColor = [UIColor purpleColor];
     
+    self.title = NSLocalizedString(@"Wine", @"wine");
+    
 }
 
 - (void) viewWillLayoutSubviews {
@@ -108,7 +110,7 @@
     CGFloat itemWidth = viewWidth - paddingWidth - paddingWidth;
     CGFloat itemHeight = 44;
     
-    self.beerPercentTextField.frame = CGRectMake(paddingWidth, paddingHeight, itemWidth, itemHeight);
+    self.beerPercentTextField.frame = CGRectMake(paddingWidth, paddingHeight + itemHeight, itemWidth, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
     self.beerCountSlider.frame = CGRectMake(paddingWidth, bottomOfTextField + paddingHeight, itemWidth, itemHeight);
@@ -120,9 +122,9 @@
     // My code to make this look great on multiple devices
     CGFloat bottomOfSLabel = CGRectGetMaxY(self.beerCounter.frame);
     if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait) {
-        self.resultLabel.frame = CGRectMake(paddingWidth, bottomOfSLabel + paddingHeight, itemWidth, itemHeight * 4);
+        self.resultLabel.frame = CGRectMake(paddingWidth, bottomOfSLabel + paddingHeight, itemWidth, itemHeight * 3);
     } else {
-        self.resultLabel.frame = CGRectMake(paddingWidth, bottomOfSLabel + paddingHeight, itemWidth, itemHeight);
+        self.resultLabel.frame = CGRectMake(paddingWidth, bottomOfSLabel + paddingHeight, itemWidth, itemHeight - paddingHeight);
     }
     
     
@@ -151,6 +153,8 @@
     // Sends slider count to label
     int howManyBeers = (int)self.beerCountSlider.value;
     self.beerCounter.text = [[NSString alloc] initWithFormat:@"%d", howManyBeers];
+    NSString *title = [[NSString alloc] initWithFormat:@"Wine (%d glasses)", howManyBeers];
+    self.title = NSLocalizedString(title, @"drinks");
 
     [self.beerPercentTextField resignFirstResponder];
 }
