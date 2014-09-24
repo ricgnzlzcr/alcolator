@@ -31,12 +31,15 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
     
+    UILabel *beerCount = [[UILabel alloc] init];
+    
     // Add each view and the gesture recognizer as the view's subviews
     [self.view addSubview:textField];
     [self.view addSubview:slider];
     [self.view addSubview:label];
     [self.view addSubview:button];
     [self.view addGestureRecognizer:tap];
+    [self.view addSubview:beerCount];
     
     // Assign the views and gesture recognizer to our properties
     self.beerPercentTextField = textField;
@@ -44,6 +47,8 @@
     self.resultLabel = label;
     self.calculateButton = button;
     self.hideKeyboardTapGestureRecognizer = tap;
+    self.beerCounter = beerCount;
+    
 }
 
 - (void)viewDidLoad {
@@ -59,6 +64,13 @@
     // Set the placeholder text
     self.beerPercentTextField.placeholder = NSLocalizedString(@"% Alcohol Content Per Beer", @"Beer percent placeholder text");
     
+    // Set the texfield keyboard to numbers
+    self.beerPercentTextField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    // Set a white background color for textfield
+    self.beerPercentTextField.backgroundColor = [UIColor whiteColor];
+    self.beerPercentTextField.textAlignment = 1;
+    
     // Tells `self.beerCountSlider` that when its value changes, it should call `[self -sliderValueDidChange:]`.
     // This is equivalent to connecting the IBAction in our previous checkpoint
     [self.beerCountSlider addTarget:self action:@selector(sliderValueDidChange:) forControlEvents:UIControlEventValueChanged];
@@ -66,6 +78,10 @@
     // Set the minimum and maximum number of beers
     self.beerCountSlider.minimumValue = 1;
     self.beerCountSlider.maximumValue = 10;
+    
+    // Center the beerCounter label and change the text
+    self.beerCounter.textAlignment = 1;
+    [self.beerCounter setFont:[UIFont fontWithName:@"American Typewriter" size:25]];
     
     // Tells `self.calculateButton` that when a finger is lifted from the button while still inside its bounds, to call `[self -buttonPressed:]`
     [self.calculateButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -78,26 +94,40 @@
     
     // Gets rid of the maximum number of lines on the label
     self.resultLabel.numberOfLines = 0;
+    self.resultLabel.textColor = [UIColor purpleColor];
+    
 }
 
 - (void) viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
-    CGFloat viewWidth = 320;
-    CGFloat padding = 20;
-    CGFloat itemWidth = viewWidth - padding - padding;
+    CGFloat viewWidth = self.view.bounds.size.width;
+    CGFloat viewHeight = self.view.bounds.size.height;
+    CGFloat paddingWidth = (CGFloat)(viewWidth * 0.0625);
+    CGFloat paddingHeight = (CGFloat)(viewHeight * 0.0625);
+    CGFloat itemWidth = viewWidth - paddingWidth - paddingWidth;
     CGFloat itemHeight = 44;
     
-    self.beerPercentTextField.frame = CGRectMake(padding, padding, itemWidth, itemHeight);
+    self.beerPercentTextField.frame = CGRectMake(paddingWidth, paddingHeight, itemWidth, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
-    self.beerCountSlider.frame = CGRectMake(padding, bottomOfTextField + padding, itemWidth, itemHeight);
+    self.beerCountSlider.frame = CGRectMake(paddingWidth, bottomOfTextField + paddingHeight, itemWidth, itemHeight);
+
     
     CGFloat bottomOfSlider = CGRectGetMaxY(self.beerCountSlider.frame);
-    self.resultLabel.frame = CGRectMake(padding, bottomOfSlider + padding, itemWidth, itemHeight * 4);
+    self.beerCounter.frame = CGRectMake(paddingWidth, bottomOfSlider, itemWidth, itemHeight);
+    
+    // My code to make this look great on multiple devices
+    CGFloat bottomOfSLabel = CGRectGetMaxY(self.beerCounter.frame);
+    if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait) {
+        self.resultLabel.frame = CGRectMake(paddingWidth, bottomOfSLabel + paddingHeight, itemWidth, itemHeight * 4);
+    } else {
+        self.resultLabel.frame = CGRectMake(paddingWidth, bottomOfSLabel + paddingHeight, itemWidth, itemHeight);
+    }
+    
     
     CGFloat bottomOfLabel = CGRectGetMaxY(self.resultLabel.frame);
-    self.calculateButton.frame = CGRectMake(padding, bottomOfLabel + padding, itemWidth, itemHeight);
+    self.calculateButton.frame = CGRectMake(paddingWidth, bottomOfLabel + paddingHeight, itemWidth, itemHeight);
 }
 
 - (void)didReceiveMemoryWarning {

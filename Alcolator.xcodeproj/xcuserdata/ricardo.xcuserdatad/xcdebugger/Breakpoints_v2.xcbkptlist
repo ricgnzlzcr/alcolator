@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Alcolator/ViewController.m"
-            timestampString = "433258261.203455"
+            timestampString = "433272861.021586"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-sliderValueDidChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Alcolator/ViewController.m"
-            timestampString = "433258829.165077"
+            timestampString = "433265501.934553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "@interface ViewController()"
             landmarkType = "2">
          </BreakpointContent>
