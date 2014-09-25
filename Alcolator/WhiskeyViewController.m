@@ -16,6 +16,14 @@
 
 @implementation WhiskeyViewController
 
+- (instancetype) init {
+    self = [super init];
+    if (self) {
+        self.title = NSLocalizedString(@"Whiskey", nil);
+    }
+    return self;
+}
+
 - (void)loadView {
     [super loadView];
     UILabel *label = [[UILabel alloc] init];
@@ -63,19 +71,21 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"Whiskey", @"whiskey");
+    self.view.backgroundColor = [UIColor colorWithRed:0.992 green:0.992 blue:0.588 alpha:1];
 }
 
 - (void)sliderValueDidChange:(UISlider *)sender {
     NSLog(@"Slider value changed to %f", sender.value);
     
     // Sends slider count to label
-    int howManyBeers = (int)self.beerCountSlider.value;
+    /* int howManyBeers = (int)self.beerCountSlider.value;
     self.whiskeyCounter.text = [[NSString alloc] initWithFormat:@"%d", howManyBeers];
     NSString *title = [[NSString alloc] initWithFormat:@"Whiskey (%d glasses)", howManyBeers];
-    self.title = NSLocalizedString(title, @"drinks");
+    self.title = NSLocalizedString(title, @"drinks"); */
     
     [self.beerPercentTextField resignFirstResponder];
+    
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) sender.value]];
 }
 
 @end

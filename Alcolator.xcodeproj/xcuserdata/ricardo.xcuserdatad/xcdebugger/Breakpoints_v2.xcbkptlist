@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "164"
             endingLineNumber = "164"
-            landmarkName = "-buttonPressed:"
+            landmarkName = "-sliderValueDidChange:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
