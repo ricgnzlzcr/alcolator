@@ -20,6 +20,19 @@
 
 @implementation ViewController
 
+- (instancetype) init {
+    self = [super init];
+    
+    if (self) {
+        self.title = NSLocalizedString(@"Wine", @"wine");
+        
+        // Since we don't have icons, let's move the title to the middle of the tab bar
+        [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -18)];
+    }
+    
+    return self;
+}
+
 - (void)loadView {
     // Allocate and initialize the all-encompassing view
     self.view = [[UIView alloc] init];
@@ -48,6 +61,7 @@
     self.calculateButton = button;
     self.hideKeyboardTapGestureRecognizer = tap;
     self.beerCounter = beerCount;
+    
     
 }
 
@@ -96,7 +110,7 @@
     self.resultLabel.numberOfLines = 0;
     self.resultLabel.textColor = [UIColor purpleColor];
     
-    self.title = NSLocalizedString(@"Wine", @"wine");
+    self.view.backgroundColor = [UIColor colorWithRed:0.741 green:0.925 blue:0.714 alpha:1];
     
 }
 
@@ -110,7 +124,7 @@
     CGFloat itemWidth = viewWidth - paddingWidth - paddingWidth;
     CGFloat itemHeight = 44;
     
-    self.beerPercentTextField.frame = CGRectMake(paddingWidth, paddingHeight + itemHeight, itemWidth, itemHeight);
+    self.beerPercentTextField.frame = CGRectMake(paddingWidth, paddingHeight, itemWidth, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
     self.beerCountSlider.frame = CGRectMake(paddingWidth, bottomOfTextField + paddingHeight, itemWidth, itemHeight);
@@ -151,12 +165,15 @@
     NSLog(@"Slider value changed to %f", sender.value);
     
     // Sends slider count to label
-    int howManyBeers = (int)self.beerCountSlider.value;
+    /* int howManyBeers = (int)self.beerCountSlider.value;
     self.beerCounter.text = [[NSString alloc] initWithFormat:@"%d", howManyBeers];
     NSString *title = [[NSString alloc] initWithFormat:@"Wine (%d glasses)", howManyBeers];
-    self.title = NSLocalizedString(title, @"drinks");
+    self.title = NSLocalizedString(title, @"drinks"); */
 
     [self.beerPercentTextField resignFirstResponder];
+    
+    // Add badge
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) sender.value]];
 }
 
 - (void)buttonPressed:(UIButton *)sender {
